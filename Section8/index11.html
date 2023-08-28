@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Complete Javascript course</title>
+    </head>
+    
+    <body>
+        <div id="wrapper">Page 1</div>
+        <form>
+            First name: <input type="text" id="firstName" name="firstName" onchange="cFun()"><br>
+            Last name: <input type="text" name="lastName" name="lastName" onchange="cFun()"><br>
+            <input type="button" onclick="sendInfo()" value="send">
+        </form>
+        
+        <script>
+            function cFun() {
+                var p = event.target;
+                if (p.name == "firstName") {
+                    message("Firstname changed to: " + p.value);
+                } else if (p.name == "lastName") {
+                    message("Lastname changed to: " + p.value);
+                }
+            }
+            
+            function sendInfo() {
+                console.log(event.target);
+                var firstName = event.target.parentElement.firstName.value;
+                var lastName = event.target.parentElement.lastName.value;
+                message("Welcome " + firstName + " " + lastName);
+            }
+            
+            function message(m) {
+                document.getElementById("wrapper").innerHTML = m;
+            }
+        </script>
+    </body>
+</html>

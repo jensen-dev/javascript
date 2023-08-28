@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+        #output {
+            width: 400px;
+            height: 400px;
+            display: block;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="message">Complete Javascript Course</div>
+    <input type="button" value="start" onclick="start()">
+    <div id="output"></div>
+    
+    <script>
+        var arr1 = [];
+        var arr2 = [];
+        var myT;
+        var loop = 0;
+        var output = document.getElementById("output");
+        
+        function start() {
+            var colorArr = ["red","green","blue","yellow","purple"];
+            for (var i=0; i<colorArr.length; i++) {
+                var rand = colorArr[Math.floor(Math.random() * colorArr.length)];
+                arr1.push(rand);
+            }
+            loop = 0;
+            myT = setTimeout(goWhite, 200);
+        }
+        
+        function goWhite() {
+            output.style.backgroundColor = "white";
+            myT = setTimeout(goColor, 200);
+        }
+        
+        function goColor() {
+            output.style.backgroundColor = arr1[loop];
+            loop++;
+            if (loop >= arr1.length) {
+                clearTimeout(myT);
+            }
+            myT = setTimeout(goWhite, 1000);
+        }
+    </script>
+</body>
+
+</html>

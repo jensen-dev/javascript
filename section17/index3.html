@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Example</title>
+</head>
+<body>
+  <div class="output"></div>
+  <script src='app20.js'></script>
+</body>
+</html>
+function output(callback,val){
+    callback(val);
+}
+ 
+function one(val){
+    console.log(`First ${val}`);
+}
+function two(val){
+    console.log(`Second ${val}`);
+}
+function three(val){
+    console.log(`Third ${val}`);
+}
+ 
+output(one,'Laurence');
+output(two,'Laurence');
+output(three,'Laurence');

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+        .toggle {
+            padding: 10px;
+            background-color: aliceblue;
+            font-size: 1.3em;
+            margin: 10px;
+        }
+        .active {
+            background-color: aquamarine;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Party invite Checklist</div>
+    <div id="output">Complete JavaScript Course </div>
+    <input type="text" id="guestName" placeholder="Guest name">
+    <input type="number" id="guestNum" placeholder="Guest number" value="0">
+    <input type="button" value="add">
+    
+    <script src="index2.json"></script>
+    
+    <script>
+        var party = [];
+        var el;
+        var output = document.getElementById('output');
+        window.onload = buildList;
+        var addGuest = document.querySelector('input[type="button"]');
+        addGuest.addEventListener('click', function(e) {
+            var g = document.getElementById('guestName');
+            var n = document.querySelector('input[type="number"]');
+            message('✘', g.value + ' +' + n.value, party.length, '');
+            party.push({
+                name: g.value,
+                guests: Number(n.value),
+                status: false
+            });
+            localStorage.setItem('party', JSON.stringify(party));
+            g.value = '';
+            n.value = '';
+        });
+        
+        output.addEventListener('click', function(e) {
+            el = e.target;
+            var ds = el.dataset;
+            el.classList.toggle('active');
+            el.children[0].innerHTML = el.children[0].innerHTML == '✘' ? '✔' : '✘';
+            party[ds.id].status = party[ds.id].status ? false : true;
+            localStorage.setItem('party', JSON.stringify(party));
+        });
+        
+        function buildList() {
+            if (localStorage.getItem('party')) {
+                party = JSON.parse(localStorage.getItem('party'));
+            } else {
+                party = JSON.parse(data);
+            }
+            for (var i=0; i<party.length; i++) {
+                var person = party[i].name + ' +' + party[i].guests;
+                if (party[i].status) {
+                    message('✔', person, i, 'active');
+                } else {
+                    message('✘', person, i, '');
+                }
+            }
+        }
+        
+        function message(m, person, id, c) {
+            output.innerHTML += '<div class="toggle ' + c + '" data-id="' + id + '" data-person="' + person + '"><span>' + m + '</span> ' + person + '</div>';
+        }
+    </script>
+</body>
+
+</html>

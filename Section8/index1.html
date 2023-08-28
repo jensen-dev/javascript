@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    
+    <body>
+        <div id="wrapper"></div>
+        <a href="index3.html">Index3</a>
+        <a href="index1.html">Index1</a>
+        <a href="index2.html">Index2</a>
+        <input type="button" onclick="goBack()" value="back">
+        <input type="button" onclick="print()" value="Print">
+        
+        <script>    
+            var output = document.getElementById("wrapper");
+            
+            output.innerHTML += window.innerHeight + " " + window.innerWidth;
+            
+            var w = window.open('index2.html');
+            w.onbeforeunload = function() {
+                alert("Don't go anywhere");
+            }
+            
+            function goBack() {
+                window.history.go(-1);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Complete Javascript course</title>
+        
+        <style>
+            .box1 {
+                background-color: aqua;
+                font-size: 1.5em;
+                color: #fff;
+            }
+            
+            .box2 {
+                background-color: red;
+                font-size: 0.5em;
+                color: #ddd;
+            }
+            
+            #one, #two, #three {
+                width: 100px;
+                height: 100px;
+                display: inline-block;
+                border: 1px solid black;
+            }
+            
+            .active {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="one" class="myClass">Box One</div>
+        <div id="two" class="myClass active">Box Two</div>
+        <div id="three" class="myClass">Box Three</div>
+        
+        <script>
+            var el = document.querySelectorAll(".myClass");
+            
+            for (var i=0; i<el.length; i++) {
+                el[i].onclick = function() {
+                    updateClass(el, 'active', 'remove');
+                    if (!this.classList.contains('active')) {
+                        this.classList.add('active');
+                    }
+                }
+            }
+            
+            function updateClass(e, c, a) {
+                for (var i=0; i<e.length; i++) {
+                    e[i].classList[a](c);
+                }
+            }
+        </script>
+    </body>
+</html>

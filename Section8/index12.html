@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Complete Javascript course</title>
+    </head>
+    
+    <body>
+        <div id="wrapper">Page 1</div>
+        <form>
+            <select onchange="imgU()">
+                <option value="">Select</option>
+                <option value="150x150">Small</option>
+                <option value="350x150">Medium</option>
+                <option value="750x150">Large</option>
+            </select>
+            <br>
+            Add text
+            <input type="text" onchange="imgU()">
+            <br>
+            Select color
+            <input type="color" onchange="imgU()">
+            <br>
+            <img src="http://via.placeholder.com/350x150/222/fff?text=Image1"
+                 id="myImg">
+        </form>
+        
+        <script>
+            var iColor = "222";
+            var iText = "image";
+            var iSize = "350x150";
+            var iSrc = "http://via.placeholder.com/";
+            
+            function imgU() {
+                if (event.target.type == "select-one" && event.target.value != "") {
+                    iSize = event.target.value;
+                } else if (event.target.type == "color") {
+                    var tempColor = event.target.value;
+                    iColor = tempColor.replace('#', '');
+                } else if (event.target.type == "text") {
+                    iText = event.target.value;
+                }
+                
+                var tempMsg = iSrc + iSize + "/" + iColor + "/fff?text=" + iText;
+                event.target.parentElement.myImg.src = tempMsg;
+                
+                message(tempMsg);
+            }
+            
+            function message(m) {
+                document.getElementById("wrapper").innerHTML = m;
+            }
+        </script>
+    </body>
+</html>

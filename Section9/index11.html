@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Complete Javascript course</title>
+        
+        <style>
+            td {
+                border: 1px solid #ddd;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="message">Complete JavaScript Course</div>
+        <div id="output"></div>
+                
+        <script>
+            window.onload = build;
+            var names = ["Laurence", "Mike", "John", "Larry", "Kim", "Joanne", "Lisa", "Janet", "Jane"];
+            var el = document.getElementById("message");
+            var msg = document.getElementById("message");
+            
+            el.setAttribute("style", "color:red;padding:10px;border:1px solid black;");
+            el.removeAttribute("style");
+            
+            function build() {
+                var html = "<h1>My Friends Table</h1><table>";
+                for (var i=0; i<names.length; i++) {
+                    html += "<tr><td>" + names[i] + "</td><td class='box' data-row='" + i + "'>" + (i+1) + "</td><td></td></tr>";
+                }
+                html += "</table>";
+                document.getElementById("output").innerHTML = html;
+                var elbox = document.querySelectorAll('#output .box');
+                var a;
+                for (var i=0; i<elbox.length; i++) {
+                    elbox[i].onclick = function() {
+                        //a = this.parentElement.getAttribute("data-row");
+                        a = this.closest('[data-row]').getAttribute('data-row');
+                        console.log(names[a] + " is on row #" + a);
+                        msg.innerHTML = names[a] + " is on row #" + a;
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>Complete Javascript course</title>
+        
+        <style>
+            .btn {
+                height: 50px;
+                width: 100px;
+                background-color: red;
+                color: white;
+                border-radius: 15px;
+                font-size: 1.2em;
+            }
+            .box {
+                height: 100px;
+                width: 100px;
+                text-align: center;
+                border: 1px solid black;
+                display: inline-block;
+            }
+        </style>
+        
+        <script>
+            var myArray = [];
+            var people = ["Laurence","Mike","John","Larry","Kim","Joanne","Lisa","Janet","Jane"];
+            var key;
+            
+            function start() {
+                myArray = people.slice();
+                myArray.sort(function(a, b) {
+                    return 0.5 - Math.random();
+                });
+                build();
+                findPerson();
+            }
+            
+            function build() {
+                var html = "<h1>Name Game</h1>";
+                for (var x=0; x<myArray.length; x++) {
+                    var str = myArray[x];
+                    var shuffled = str.split('').sort(function() {
+                        return 0.5 - Math.random();
+                    }).join('');
+                    html += '<div class="box" onmouseover="uText(this,\'' + shuffled + '\')" onmouseout="uText(this,\'Hidden' + (x+1) + '\')" onclick="eEle(this,\'' + str + '\')">Hidden ' + (x+1) + '</div>';
+                }
+                document.getElementById("output").innerHTML = html;
+            }
+            
+            function findPerson() {
+                key = myArray[Math.floor(Math.random()*myArray.length)];
+                message1("Find this name " + key);
+            }
+            
+            function uText(t, msg) {
+                t.innerHTML = msg;
+            }
+            
+            function eEle(t, s) {
+                if (s == key) {
+                    var index = myArray.indexOf(s);
+                    myArray.splice(index, 1);
+                    t.parentNode.removeChild(t);
+                    
+                    message2('Correct');
+                    findPerson();
+                } else {
+                    message2('Wrong');
+                }
+                
+                if (myArray.length <= 0) {
+                    message1('GAME OVER');
+                }
+            }
+            
+            function message1(msg) {
+                document.getElementById("message1").innerHTML = msg;
+            }
+            
+            function message2(msg) {
+                document.getElementById("message2").innerHTML = msg;
+            }
+        </script>
+    </head>
+    
+    <body>
+        <input type="button" value="Start" onclick="start()" class="btn">
+        <div id="message1">Welcome</div>
+        <div id="message2">Click Start</div>
+        <div id="output"></div>
+    </body>
+</html>

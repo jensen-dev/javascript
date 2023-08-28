@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        
+        td:first-child {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="message">complete Javascript course</div>
+    <div>
+        <input type="text" id="addFriend">
+        <input type="button" id="addNew" value="Add Friend">
+    </div>
+    <div class="output"></div>
+    
+    <script>
+        var myArray = ["James","Ayaz","Budi","Cherry","Danny","Elisen"];
+        window.onload = build;
+        
+        document.getElementById("addNew").addEventListener("click", addNew, false);
+        
+        function addNew() {
+            var a = document.getElementById("addFriend").value;
+            myArray.push(a);
+            build();
+        }
+        
+        function build() {
+            var html = "<h1>Click Table</h1><table>"
+            for (var i=0; i<myArray.length; i++) {
+                html += "<tr id='id" + i + "' data-row=" + i + "><td>" + myArray[i] + "</td><td><a href='#' data-action='delete'>Del</a></td><td><a href='#' data-action='edit'>Edit</a></td></tr>";
+            }
+            document.querySelector(".output").innerHTML = html;
+            
+            var dad = document.querySelectorAll("[data-action='delete']");
+            for (var i=0; i<dad.length; i++) {
+                dad[i].addEventListener('click', function() {
+                    event.preventDefault();
+                    var iValue = this.closest("[data-row]").getAttribute('data-row');
+                    var r = myArray.splice(iValue, 1);
+                    build();
+                });
+            }
+            
+            var dae = document.querySelectorAll("[data-action='edit']");
+            for (var i=0; i<dae.length; i++) {
+                dae[i].addEventListener('click', function() {
+                    event.preventDefault();
+                    var row = this.closest("[data-row]");
+                    var rid = row.getAttribute("data-row");
+                    row.style.backgroundColor = "Yellow";
+                    
+                    var td = row.firstElementChild;
+                    var input = document.createElement("input");
+                    input.type = "text";
+                    input.value = row.firstElementChild.innerText;
+                    td.innerHTML = "";
+                    td.appendChild(input);
+                    input.focus();
+                    input.onblur = function() {
+                        td.removeChild(input);
+                        td.innerHTML = input.value;
+                        myArray[rid] = input.value;
+                        row.style.backgroundColor = "White";
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

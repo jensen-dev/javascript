@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="message">complete Javascript course</div>
+    <div>
+        <input type="text" id="addFriend">
+        <input type="button" id="addNew" value="Add Friend">
+    </div>
+    <div class="output"></div>
+    
+    <script>
+        var myArray = ["James","Ayaz","Budi","Cherry","Danny","Elisen"];
+        window.onload = build;
+        
+        function build() {
+            var html = "<h1>Click Table</h1><table>"
+            for (var i=0; i<myArray.length; i++) {
+                html += "<tr id='id" + i + "' data-row=" + i + "><td>" + myArray[i] + "</td><td><a href='#' data-action='delete'>Del</a></td><td><a href='#' data-action='edit'>Edit</a></td></tr>";
+            }
+            document.querySelector(".output").innerHTML = html;
+            var dad = document.querySelectorAll("[data-action='delete']");
+            for (var i=0; i<dad.length; i++) {
+                dad[i].addEventListener('click', function() {
+                    event.preventDefault();
+                    var iValue = this.closest("[data-row]").getAttribute('data-row');
+                    var r = myArray.splice(iValue, 1);
+                    build();
+                    console.log(r);
+                });
+            }
+            
+            console.log(dad);
+            
+        }
+    </script>
+</body>
+
+</html>

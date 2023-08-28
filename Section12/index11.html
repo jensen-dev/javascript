@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="output">Complete JavaScript Course </div>
+    <canvas id="canvas1"></canvas>
+    
+    <script>
+        var canvas = document.getElementById("canvas1");
+        var ctx = canvas.getContext('2d');
+        canvas.width = 600;
+        canvas.height = 400;
+        
+        ctx.fillStyle = 'red';
+        ctx.fillRect(10, 30, 100, 100);
+        
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'green';
+        ctx.strokeRect(10, 150, 100, 100);
+        
+        
+    </script>
+</body>
+
+</html>

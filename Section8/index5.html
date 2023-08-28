@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    
+    <body>
+        <div id="wrapper">Page 1</div>
+        <form name="myForm">
+            <input type="text" id="url" name="url" value="http://www.google.com">
+            <input type="button" onclick="goUrl()" value="Go to a URL">
+            <input type="button" onclick="goFavUrl('http://www.hotmail.com')" value="Go to Hotmail">
+            <input type="button" onclick="myValue()" value="Value">
+        </form>
+        
+        <script>
+            var output = document.getElementById("wrapper");
+            
+            function goUrl() {
+                var url = document.getElementById("url").value;
+                window.location = url;
+            }
+            
+            function goFavUrl(url) {
+                window.location = url;
+            }
+            
+            function myValue() {
+                document.getElementById("wrapper").innerHTML =
+                    document.myForm.url.value;
+            }
+            
+            setTimeout(function() {
+                document.myForm.children[3].value = 'Hello Jensen';
+            }, 5000);
+        </script>
+    </body>
+</html>

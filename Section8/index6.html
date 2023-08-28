@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    
+    <body>
+        <div id="wrapper">Page 1</div>
+        <form name="myForm">
+            <input type="button" onclick="myFun(this)" value="click 1">
+            <input type="button" onclick="myFun(this)" value="click 2">
+            <input type="button" onclick="myFun(this)" value="click 3">
+        </form>
+        
+        <script>
+            var output = document.getElementById("wrapper");
+            
+            function myFun(t) {
+                document.getElementById("wrapper").innerHTML = t.value;
+                t.value = t.value.toUpperCase();
+            }
+            
+            setTimeout(function() {
+                document.myForm.children[2].value = 'Hello Jensen';
+            }, 5000);
+        </script>
+    </body>
+</html>

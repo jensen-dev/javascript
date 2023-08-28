@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Complete Javascript course</title>
+    </head>
+    
+    <body>
+        <div id="wrapper">Page 1</div>
+        <input type="text" name="myNum" onkeypress="return numCheck()" onpaste="return false">
+        
+        <script>
+            function numCheck() {
+//                message(event.target.value);
+                message(!isNaN(event.key));
+                return !isNaN(event.key);
+            }
+            
+            function message(m) {
+                var shouldBeNumMsg = "";
+                console.log(m);
+                if (m == false) {
+                    shouldBeNumMsg = "Please enter numbers";
+                }
+                
+                document.getElementById("wrapper").innerHTML = shouldBeNumMsg;
+            }
+        </script>
+    </body>
+</html>

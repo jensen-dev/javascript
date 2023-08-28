@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Complete Javascript course</title>
+        
+        <style>
+            td {
+                border: 1px solid #ddd;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="message">Complete JavaScript Course</div>
+        <div id="output"></div>
+                
+        <script>
+            window.onload = build;
+            var names = ["Laurence", "Mike", "John", "Larry", "Kim", "Joanne", "Lisa", "Janet", "Jane"];
+            var el = document.getElementById("message");
+            var msg = document.getElementById("message");
+            
+            el.setAttribute("style", "color:red;padding:10px;border:1px solid black;");
+            el.removeAttribute("style");
+            
+            function build() {
+                var html = "<h1>My Friends Table</h1><table>";
+                for (var i=0; i<names.length; i++) {
+                    html += "<tr data-row='" + i + "' data-vote='0'><td class='box'>" + (i+1) + "</td><td>" + names[i] + "</td><td>0</td></tr>";
+                }
+                html += "</table>";
+                document.getElementById("output").innerHTML = html;
+                var elbox = document.querySelectorAll('#output .box');
+                var a;
+                var v;
+                for (var i=0; i<elbox.length; i++) {
+                    elbox[i].onclick = function() {
+                        //a = this.parentElement.getAttribute("data-row");
+                        a = this.closest('[data-row]').getAttribute('data-row');
+                        msg.innerHTML = names[a] + " is on row #" + a;
+                        
+                        v = this.closest('[data-vote]').getAttribute('data-vote');
+                        v++;
+                        this.parentElement.lastElementChild.innerText = v;
+                        this.parentElement.setAttribute("data-vote", v);
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Complete Javascript Couse</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="output">Complete Javascript Course</div>
+        
+        <script>
+            document.cookie = "login=true";
+            
+            function cCookie(name, value, days) {
+                var e = "";
+                if (days) {
+                    var d = new Date();
+                    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+                    e = "; expires=" + d.toUTCString();
+                }
+                document.cookie = name + "=" + value + e + "; path=/";
+            }
+            
+            function rCookie(name) {
+                var p = name + "=";
+                var c = document.cookie.split(';');
+                for (var i=0; i<c.length; i++) {
+                    var t = c[i].trim();
+                    if (t.indexOf(p) == 0) {
+                        return t.substring(p.length, t.length);
+                        console.log(t);
+                    }
+                }
+                return "";
+            }
+            
+            function dCookie(name) {
+                cCookie(name,"",-1);
+            }
+            
+            cCookie('expire','100',1);
+        </script>
+    </body>
+</html>

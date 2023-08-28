@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Complete Javascript Couse</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="output">Complete Javascript Couse</div>
+        <input type="button" onclick="myFun()" value="Click">
+        
+        <script>
+            var output = document.getElementById("output");
+            var str = "abads ppwpirw tej Javascript le ternl nje 12244 424099 javascript 4294275629 31245 javascript123";
+            
+            function myFun() {
+                var p = /Javascript/ig;
+                var r = str.match(p);
+                r.forEach(function(e) {
+                    console.log(e);
+                })
+            }
+        </script>
+    </body>
+</html>

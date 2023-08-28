@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    
+    <body>
+        <div id="wrapper"></div>
+        <a href="index3.html">Index3</a>
+        <a href="index1.html">Index1</a>
+        <a href="index2.html">Index2</a>
+        <input type="button" onclick="goBack()" value="back">
+        <input type="button" onclick="print()" value="Print">
+        <input type="button" onclick="startInt()" value="Start">
+        <input type="button" onclick="clearInt()" value="Stop">
+        
+        <script>    
+            var output = document.getElementById("wrapper");
+            window.setTimeout(updateWrapper, 1000);
+            
+            function goBack() {
+                window.history.go(-1);
+            }
+            
+            var myTimer;
+            function startInt() {
+                myPopup();
+                myTimer = window.setTimeout(myPopup, 1000);
+            }
+            
+            function updateWrapper() {
+                document.getElementById('wrapper').innerHTML = "Welcome to my website :>";
+            }
+            
+            function clearInt() {
+                window.clearInterval(myTimer);
+            }
+            
+            function myPopup() {
+                alert("Hello");
+            }
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    
+    <body>
+        <div id="wrapper"></div>
+        <a href="index3.html">Index3</a>
+        <a href="index1.html">Index1</a>
+        <a href="index2.html">Index2</a>
+        <input type="button" onclick="goBack()" value="back">
+               
+        <script>    
+            var output = document.getElementById("wrapper");
+            
+            console.dir(window);
+            
+            output.innerHTML += window.innerHeight + " " + window.innerWidth;
+            
+            function goBack() {
+                window.history.go(-1);
+            }
+        </script>
+    </body>
+</html>

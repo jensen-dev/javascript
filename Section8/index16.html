@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Complete Javascript course</title>
+        
+        <style>
+            .box {
+                height: 150px;
+                width: 150px;
+                padding: 20px;
+                margin: 0 50px;
+                display: inline-block;
+                border:  1px solid black;
+            }
+            
+            #getEl {
+                background-color: red;
+            }
+        </style>
+        
+        <script>
+            var holderItem;
+            
+            function dragStart() {
+                holderItem = event.target;
+            }
+            
+            function drop() {
+                event.preventDefault();
+                if (event.target.className == 'box') {
+                    event.target.appendChild(holderItem);
+                }
+            }
+            
+            function dragOver() {
+                event.preventDefault();
+            }
+        </script>
+    </head>
+    
+    <body>
+        <div id="wrapper">Page 1</div>
+        <div class="box" ondrop="drop()" ondragover="dragOver()">1
+            <div id="getEl" ondragstart="dragStart()" draggable="true">Drag me please</div>
+        </div>
+        <div class="box" ondrop="drop()" ondragover="dragOver()">2
+        </div>
+        <div class="box" ondrop="drop()" ondragover="dragOver()">3
+        </div>
+        <div class="box" ondrop="drop()" ondragover="dragOver()">4
+        </div>
+    </body>
+</html>

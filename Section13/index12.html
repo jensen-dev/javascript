@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="output">Complete JavaScript Course </div>
+    <input type="button" id="search" value="load">
+    <div id="output1"></div>
+    <script>
+        window.onload = init;
+
+        function init() {
+            document.getElementById('search').addEventListener('click', ySearch, false);
+        }
+
+        function ySearch() {
+            var url = 'http://discoveryvip.com/shared/json.php?f=quiz';
+            getJSON(url, function(data) {
+                showResults(data);
+            })
+        }
+
+        function showResults(results) {
+            var html = "";
+            for (var i=0; i<results.length; i++) {
+                html += '<h3>' + results[i].question + ': ';
+                for (var j=0; j<results[i].answers.length; j++) {
+                    html += results[i].answers[j];
+                    if (j != (results[i].answers.length-1))
+                        html += ', ';
+                }
+                html += '</h3>';
+            }
+            document.getElementById('output1').innerHTML = html;
+        }
+
+        function getJSON(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', url, true);
+            xhr.responseType = 'json';
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    callback(xhr.response);
+                }
+            }
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>

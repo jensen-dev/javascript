@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Complete JavaScript Course</title>
+    </head>
+    <body>
+        <div id="output">Hello Jens!</div>    
+        <script>
+            var output = document.getElementById("output");
+            document.writeln(output.innerHTML + "<br>");
+        </script>
+        
+        <br>
+        <br>
+        <div id="output1">Hello World</div>
+        <input type="text" id="val">
+        <script>
+            var output1 = document.getElementById("output1");
+            var val = document.getElementById("val");
+            output1.innerHTML = val.value;
+        </script>
+        
+        <br>
+        <br>
+        <div id="output2">Hello World</div>
+        <input type="text" id="val2" value="JavaScript">
+        <script>
+            document.getElementById('val2').value = document.getElementById('output2').innerHTML;
+        </script>
+    </body>
+</html>

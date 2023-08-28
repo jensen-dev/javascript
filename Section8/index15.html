@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Complete Javascript course</title>
+    </head>
+    
+    <body>
+        <div id="wrapper">Page 1</div>
+        <form action="index15.html" method="get" onsubmit="return valForm()">
+            <input type="text" id="firstName" placeholder="First name">
+            <input type="text" id="lastName" placeholder="Last name">
+            <input type="text" id="age" placeholder="Age">
+            <input type="submit" value="submit">
+        </form>
+        <div id="warning" style="color: red"></div>
+        
+        <script>
+            function valForm() {
+                var child = event.target.children;
+                if (child.firstName.value == '') {
+                    warningMsg("<b>First name</b> must be filled");
+                    return false;
+                } else if (child.lastName.value == '') {
+                    warningMsg("<b>Last name</b> must be filled");
+                    return false;
+                } else if (child.age.value == '') {
+                    warningMsg("<b>Age</b> must be filled");
+                    return false;
+                }
+                document.getElementById("warning").innerHTML = "";
+                return true;
+            }
+            
+            function warningMsg(m) {
+                document.getElementById("warning").innerHTML = m;
+            }
+        </script>
+    </body>
+</html>

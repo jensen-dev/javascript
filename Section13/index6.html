@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+        .toggle {
+            padding: 10px;
+            background-color: aliceblue;
+            font-size: 1.3em;
+            margin: 10px;
+        }
+        .active {
+            background-color: aquamarine;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Asynchronous JavaScript and XML</div>
+    <div id="output">Complete JavaScript Course </div>
+    <input type="text" id="guestName" placeholder="Guest name">
+    <input type="number" id="guestNum" placeholder="Guest number" value="0">
+    <input type="button" value="add">
+    
+    <script>
+        
+        window.onload = init;
+        
+        function init() {
+            loadJSON();
+        }
+        
+        function loadJSON(callback) {
+            var xHR = new XMLHttpRequest;
+            xHR.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var myObj = JSON.parse(this.responseText);
+                    console.log(this.responseText);
+                }
+            }
+            
+            xHR.open('GET', 'http://discoveryvip.com/shared/json.php?f=party', true);
+            xHR.send();
+            console.log(xHR);
+        }
+    </script>
+</body>
+
+</html>

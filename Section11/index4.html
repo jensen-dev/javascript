@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Complete Javascript Couse</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="output">Complete Javascript Course</div>
+        <form name="myForm">
+            <textarea name="textArea" rows=12 cols=100></textarea>
+            <input type="button" onclick="lookUp()" value="get emails">
+            <textarea name="textArea2" rows=12 cols=100></textarea>
+        </form>
+        
+        <script>
+            function lookUp() {
+                var rawText = document.myForm.textArea.value;
+                var eData = rawText.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z.]+)/ig);
+                var html = "";
+                var emails = [];
+                
+                for (var i=0; i<eData.length; i++) {
+                    if (emails.indexOf(eData[i]) == -1)
+                        emails.push(eData[i]);
+                }
+                document.myForm.textArea2.value = emails.join('|');
+            }
+        </script>
+    </body>
+</html>

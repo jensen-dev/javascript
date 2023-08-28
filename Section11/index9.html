@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Complete Javascript Couse</title>
+        
+        <style>
+            .box {
+                width: 100px;
+                height: 100px;
+                border: 1px solid black;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="output">Complete Javascript Course</div>
+        <div id="test">
+            <div>First</div>
+            <div>Second</div>
+            <div>Three
+                <div>Four
+                    <div>Five</div>
+                    <div>Six</div>
+                    <div>Seven</div>
+                    <div>Eight</div>
+                    <div>Nine</div>
+                    <div>Ten</div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            cUp();
+            
+            function cUp() {
+                var test = document.getElementById("test");
+                cNode(test);
+            }
+            
+            function cNode(data) {
+                for (var i=0; i<data.children.length; i++) {
+                    var c = data.children[i];
+                    sNode(c);
+                    cNode(c);
+                }
+            }
+            
+            function sNode(data) {
+                var bgColor = '#' + Math.random().toString(16).substr(-6);
+                console.log(bgColor);
+                data.style.backgroundColor = bgColor;
+                data.classList.add('box');
+            }
+        </script>
+    </body>
+</html>

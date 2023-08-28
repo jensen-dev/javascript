@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Complete Javascript Couse</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="output">Complete Javascript Couse</div>
+        <input type="text" id="email" value="email@gmail.com">
+        <input type="text" id="num" value="123456">
+        <input type="text" id="cha" value="characters">
+        <input type="button" value="Validate Inputs" onclick="myFun()" >
+        
+        <script>
+            var output = document.getElementById("output");
+            var str = "abads ppwpirw tej Javascript le ternl nje 12244 424099 javascript 4294275629 31245 javascript123";
+            
+            function checkEmail(e) {
+                var p =/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z.]+)/ig;
+                var r = e.match(p);
+                return (r == null) ? false : true;
+            }
+            
+            function checkNum(e) {
+                var p = /^\d+$/;
+                var r = e.match(p);
+                return (r == null) ? false : true;
+            }
+            
+            function checkChar(e) {
+                var p = /^\D+$/;
+                var r = e.match(p);
+                return (r == null) ? false : true;
+            }
+            
+            function myFun() {
+                var inputs = document.getElementsByTagName("input");
+                for (var i=0; i<inputs.length; i++) {
+                    console.log(inputs[i]);
+                    if (inputs[i].type == "text") {
+                        console.log(inputs[i].type);
+                        console.log(inputs[i].id);
+                        if (inputs[i].id == "email") {
+                            if (checkEmail(inputs[i].value)) {
+                                console.log("Email valid");
+                            } else {
+                                console.log("Email bad");
+                            }
+                        } else if (inputs[i].id == "num") {
+                            if (checkNum(inputs[i].value)) {
+                                console.log("num valid");
+                            } else {
+                                console.log("num bad");
+                            }
+                        } else if (inputs[i].id == "cha") {
+                            if (checkChar(inputs[i].value)) {
+                                console.log("char valid");
+                            } else {
+                                console.log("char bad");
+                            }
+                        }
+                    }
+                }
+                
+                var e = document.getElementById("email").value;
+                var p =/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z.]+)/ig;
+                var r = e.match(p);
+                var t = (r == null) ? false : true;
+                console.log(r);
+                console.log(t);
+                
+                return t;
+            }
+        </script>
+    </body>
+</html>

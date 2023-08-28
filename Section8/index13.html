@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Complete Javascript course</title>
+    </head>
+    
+    <body onload="startImg()">
+        <div id="wrapper">Page 1</div>
+        <img id="myImg">
+        
+        <script>
+            var imagePlace = 0;
+            var images = ["1","2","3","4","5","6","7"];
+            var imagesC = ["111","222","FF0000","00FF00","0000FF","000","333"];
+            
+            function startImg() {
+                setInterval(swapImage, 1000);
+            }
+            
+            function swapImage() {
+                imagePlace++;
+                
+                if (imagePlace == images.length) {
+                    imagePlace = 0;
+                }
+                
+                var myImg = document.getElementById("myImg");
+                myImg.src = "http://via.placeholder.com/350x150/" + imagesC[imagePlace]
+                    + "/fff?text=Image" + images[imagePlace];
+            }
+        </script>
+    </body>
+</html>

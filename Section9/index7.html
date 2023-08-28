@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Complete Javascript course</title>
+        
+        <style>
+        </style>
+    </head>
+    
+    <body onload="start()">
+        <div id="msg">Message 1</div>
+        
+        <div class="output">Test me 1</div>
+        <div class="output">Test me 2</div>
+        <div id="pickme1">
+            <div class="output highlight">Test me 3</div>
+        </div>
+        <input type="text" name="queryStuff" id="queryStuff">
+        <input type="button" onclick="mySel()" value="Get Query">
+        
+        <div id="pickme2">
+            <div class="output">Test me 4</div>
+            <div class="output">Test me 5</div>
+            <div class="output">Test me 6</div>
+        </div>
+        <div class="output highlight">Test me 7</div>
+        <div class="output">Test me 8</div>
+        <div class="output">Test me 9</div>
+        <div class="output">Test me 10</div>
+        
+        <script>
+            var bgColor = ["yello","red","blue","green","purple","pink","brown"];
+            var msg = document.getElementById("msg");
+            
+            var el = document.querySelectorAll(".output");
+            
+            function start() {
+                setInterval(swapBg, 2000);
+            }
+            
+            function swapBg() {
+                for (var i=0; i<el.length; i++) {
+                    c = bgColor[Math.floor(Math.random() * bgColor.length)];
+                    el[i].style.backgroundColor = c;
+                }
+            }
+        </script>
+    </body>
+</html>
